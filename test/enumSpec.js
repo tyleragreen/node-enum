@@ -20,6 +20,13 @@ describe('An enum', function() {
   it('can return all its members', function() {
     expect(Mode.ALL).to.deep.equal([Mode.BEST,Mode.WORST]); 
   });
+  it('can be iterated over', function() {
+    let foundMembers = [];
+    for (let member of Mode) {
+      foundMembers.push(member);
+    }
+    expect(foundMembers).to.deep.equal(Mode.ALL);
+  });
   it('can find a member through string interpolation', function() {
     expect(Mode.find('BE'+'ST')).to.equal(Mode.BEST);
   });

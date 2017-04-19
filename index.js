@@ -11,17 +11,28 @@ function Enum(keys) {
     map[key] = key;
   });
   map.ALL = Object.values(map);
-  map.default = {};
   
   map.isValid = function(key) {
     return map.hasOwnProperty(key);
   };
   // Using Enum.find(expr) is the same as Enum[expr]
   map.find = function(property) {
-    return testProp(map, property);
+    return testProperty(map, property);
   };
   
-  function testProp(map, property) {
+  map[Symbol.iterator] = function () {
+    let nextIndex = 0;
+    
+    return {
+      next: function() {
+        return nextIndex < keys.length ?
+          { value: map.ALL[nextIndex++], done: false } :
+          { done: true };
+      }
+    };
+  };
+  
+  function testProperty(map, property) {
     if (!map[property]) {
       throw new Error(`Member '${property}' not found on the Enum.`);
     }
@@ -30,7 +41,7 @@ function Enum(keys) {
   
   return new Proxy(map, {
     get: (target, property) => {
-      return testProp(map, property);
+      return testProperty(map, property);
     },
     set: (target, property, value) => {
       throw new Error('Enum members may not be added.');
