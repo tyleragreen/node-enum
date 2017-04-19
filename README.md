@@ -2,6 +2,10 @@
 
 Simple Javascript ES6 enumerated types.
 
+## Installation
+
+`npm install node-enums`
+
 ## Usage
 
 ```javascript
