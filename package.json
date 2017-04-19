@@ -1,5 +1,5 @@
 {
-  "name": "node-enum",
+  "name": "node-enums",
   "version": "1.0.0",
   "description": "Enumerated types for node.js.",
   "main": "index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tyleragreen/node-enum.git"
+    "url": "git+https://github.com/tyleragreen/node-enums.git"
   },
   "keywords": [
     "enum"
@@ -22,9 +22,9 @@
   "author": "Tyler A. Green <greent@tyleragreen.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tyleragreen/node-enum/issues"
+    "url": "https://github.com/tyleragreen/node-enums/issues"
   },
-  "homepage": "https://github.com/tyleragreen/node-enum#readme",
+  "homepage": "https://github.com/tyleragreen/node-enums#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
