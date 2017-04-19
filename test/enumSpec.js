@@ -2,7 +2,7 @@
 
 process.env.NODE_ENV = 'test';
 
-var Enum = require('../index');
+var Enum = require('../lib/enum');
 
 var expect = require('chai').expect;
 
@@ -28,11 +28,11 @@ describe('An enum', function() {
     expect(foundMembers).to.deep.equal(Mode.ALL);
   });
   it('can find a member through string interpolation', function() {
-    expect(Mode.find('BE'+'ST')).to.equal(Mode.BEST);
+    expect(Mode['BE'+'ST']).to.equal(Mode.BEST);
   });
   it('should fail to find a member through string interpolation', function() {
     expect(function() {
-      Mode.find('B'+'ST');
+      Mode['B'+'ST'];
     }).to.throw(Error);
   });
   it('should test for membership', function() {
