@@ -15,8 +15,11 @@ var Mode = Enum(['BEST','WORST']);
 console.log(Mode.BEST);
 // BEST
 
-console.log(Mode.ALL);
+console.log(Mode.toArray());
 // [ 'BEST', 'WORST' ]
+
+console.log(Mode.toString());
+// Enum{BEST, WORST}
 
 console.log(Mode['BE'+'ST']);
 // BEST

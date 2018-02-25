@@ -6,33 +6,36 @@ var Enum = require('../lib/enum');
 
 var expect = require('chai').expect;
 
-let Mode = Enum(['BEST','WORST']);
+let Mode = Enum(['BEST', 'WORST']);
 
 describe('An enum', function() {
   it('should fail if created without an array', function() {
     expect(function() {
-      Enum('BEST','WORST');
+      Enum('BEST', 'WORST');
     }).to.throw(Error);
   });
   it('has members that equal themselves', function() {
     expect(Mode.WORST).to.equal(Mode.WORST);
   });
-  it('can return all its members', function() {
-    expect(Mode.ALL).to.deep.equal([Mode.BEST,Mode.WORST]); 
+  it('can return a string of its members', function() {
+    expect(Mode.toString()).to.equal('Enum{BEST, WORST}');
+  });
+  it('can return an array of its members', function() {
+    expect(Mode.toArray()).to.deep.equal([Mode.BEST, Mode.WORST]);
   });
   it('can be iterated over', function() {
     let foundMembers = [];
     for (let member of Mode) {
       foundMembers.push(member);
     }
-    expect(foundMembers).to.deep.equal(Mode.ALL);
+    expect(foundMembers).to.deep.equal(Mode.toArray());
   });
   it('can find a member through string interpolation', function() {
-    expect(Mode['BE'+'ST']).to.equal(Mode.BEST);
+    expect(Mode['BE' + 'ST']).to.equal(Mode.BEST);
   });
   it('should fail to find a member through string interpolation', function() {
     expect(function() {
-      Mode['B'+'ST'];
+      Mode['B' + 'ST'];
     }).to.throw(Error);
   });
   it('should test for membership', function() {
